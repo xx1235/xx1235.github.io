@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+<script>
+  window.CMS_CONFIG = {
+    backend: { name: "github", repo: "xx1235/xx1235.github.io" },
+    media_folder: "static/img",
+    public_folder: "/img",
+    collections: [
+      { name: "posts", label: "글", folder: "content/posts", create: true,
+        fields: [ { name: "title", label: "제목" },
+                  { name: "date", label: "날짜", widget: "datetime" },
+                  { name: "body", label: "본문", widget: "markdown" } ] }
+    ]
+  }
+</script>
+</html>

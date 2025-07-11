@@ -6,7 +6,6 @@ theme = "PaperMod"
 
 hasCJKLanguage   = true     # 한글 줄바꿈 최적화
 enableRobotsTXT  = true
-paginate         = 10
 
 [params]
   author            = "메랜서포터"

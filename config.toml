@@ -1,0 +1,17 @@
+baseURL  = "https://메랜서포터.com/"
+title    = "메랜서포터"
+languageCode = "ko"
+defaultContentLanguage = "ko"
+theme = "PaperMod"
+
+hasCJKLanguage   = true     # 한글 줄바꿈 최적화
+enableRobotsTXT  = true
+paginate         = 10
+
+[params]
+  author            = "메랜서포터"
+  ShowReadingTime   = true
+  ShowShareButtons  = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

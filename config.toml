@@ -14,3 +14,9 @@ enableRobotsTXT  = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[[menu.main]]
+  identifier = "about"
+  name       = "소개"
+  url        = "/about/"
+  weight     = 10   # 낮을수록 왼쪽/상단

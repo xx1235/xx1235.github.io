@@ -1,9 +1,12 @@
 backend:
   name: github
-  repo: xx1235/xx1235.github.io   # ⬅️ 자신의 저장소 경로
+  repo: xx1235/xx1235.github.io   # ⬅️ 자신의 저장소
   branch: main
-media_folder: "static/img"
-public_folder: "/img"
+  base_url: https://auth.staticcms.org
+  auth_endpoint: auth
+  token_endpoint: auth/token
+  site_domain: xn--lj2bo5c32io2r8gd.com   # 커스텀 도메인 검증 전이라면 punycode 사용
+
 
 collections:
   - name: "posts"

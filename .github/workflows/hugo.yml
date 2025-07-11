@@ -1,0 +1,47 @@
+name: Build & Deploy Hugo site
+
+# 언제 실행? → main 브랜치에 push 할 때마다
+on:
+  push:
+    branches: [ "main" ]
+
+# 로봇에게 필요한 권한
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest         # 깃허브가 주는 가상 리눅스 PC
+    steps:
+      # 1) 내 저장소 코드 받아오기 (themes 폴더 포함)
+      - uses: actions/checkout@v4
+        with:
+          submodules: true         # 테마를 submodule로 쓰면 여기 true 필요
+          fetch-depth: 0
+
+      # 2) Hugo 실행에 필요한 Go 언어 설치
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      # 3) Hugo 설치
+      - name: Install Hugo
+        run: sudo apt-get update && sudo apt-get install hugo -y
+
+      # ★ 4) 테마 내려받기 (PaperMod 예시) ─ 폴더명과 config.toml의 theme 값 일치
+      - name: Clone PaperMod theme
+        run: git clone --depth 1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+
+      # 5) Hugo로 사이트 빌드 (public 폴더 생성)
+      - name: Build site
+        run: hugo --minify
+
+      # 6) 빌드 결과물을 깃허브 Pages에 업로드
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      # 7) 실제 배포
+      - uses: actions/deploy-pages@v4

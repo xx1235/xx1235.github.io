@@ -43,10 +43,9 @@ jobs:
       # 7) 실제 배포
       - uses: actions/deploy-pages@v4
       
-  build-deploy:
-    environment:
+      environment:
       name: github-pages
 
-    runs-on: ubuntu-latest
-    steps:
+      runs-on: ubuntu-latest
+      steps:
       # … 이하 동일 …

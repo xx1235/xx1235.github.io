@@ -1,12 +1,18 @@
 backend:
   name: github
-  repo: xx1235/xx1235.github.io   # ⬅️ 자신의 저장소
+  repo: xx1235/xx1235.github.io      # ← 실제 저장소 경로
   branch: main
   base_url: https://auth.staticcms.org
   auth_endpoint: auth
   token_endpoint: auth/token
-  site_domain: xn--lj2bo5c32io2r8gd.com   # 커스텀 도메인 검증 전이라면 punycode 사용
+  site_domain: xn--lj2bo5c32io2r8gd.com   # (DNS 초록 체크 뒤엔 메랜서포터.com 으로 바꿔도 됨)
 
+media_folder: "static/img"      # 리포지토리 내부 저장 위치
+public_folder: "/img"           # 사이트에서 불러올 경로(/static 제외)
+
+media_library:                  # 3.x부터 required
+  name: uploadcare              # 기본 업로드 라이브러리
+  config: {}                    # 기본 설정이면 빈 객체로 둠
 
 collections:
   - name: "posts"
@@ -15,6 +21,6 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "제목", name: "title", widget: "string" }
-      - { label: "날짜", name: "date", widget: "datetime" }
-      - { label: "본문", name: "body", widget: "markdown" }
+      - { name: "title", label: "제목", widget: "string" }
+      - { name: "date",  label: "날짜", widget: "datetime" }
+      - { name: "body",  label: "본문", widget: "markdown" }
